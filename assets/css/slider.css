@@ -2,13 +2,14 @@
     Main Slider
 ====================================================*/
 .main-slider {
-    background-color: var(--bg-grey);
+    background-color: transparent;
     position: relative;
     overflow: hidden;
 }
 
 .main-slider .swiper-slide {
-    background-image: url(../img/slider-background.jpg);
+    background-image: none;
+    background-color: transparent;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -16,7 +17,7 @@
 }
 
 .slider-img-wrap {
-    width: 50%;
+    width: 100%;
     height: 100%;
     position: absolute;
     right: 0;
@@ -26,7 +27,7 @@
 .slider-img {
     background-repeat: no-repeat;
     background-position: center left;
-    clip-path: polygon(0 0, 100% 0%, 100% 100%, 200px 100%);
+    clip-path: none;
     width: 100%;
     height: 100%;
     position: absolute;
@@ -48,6 +49,7 @@
 }
 
 .slider-shape {
+    display: none;
     transform: skewX(18deg);
     width: 100%;
     height: 100%;
@@ -101,11 +103,12 @@
 
 .slider-caption.medium {
     font-family: var(--primary-font);
-    color: var(--heading-color);
+    color: var(--white-color);
     font-size: 18px;
     font-weight: 500;
     text-transform: capitalize;
     margin-bottom: 20px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
 }
 
 .slider-caption.medium .inner-layer div {
@@ -115,7 +118,7 @@
 
 .slider-caption.medium .inner-layer div:before {
     background-color: var(--primary-color);
-    box-shadow: 0px 0px 0px 3px rgba(255, 153, 0, 0.5);
+    box-shadow: 0px 0px 0px 3px rgba(255, 153, 0, 0.5), 0px 0px 10px rgba(0, 0, 0, 0.5);
     width: 8px;
     height: 8px;
     border-radius: 50%;
@@ -131,18 +134,23 @@
     font-size: 56px;
     line-height: 60px;
     font-weight: 700;
-    color: var(--heading-color);
+    color: var(--white-color);
     margin-bottom: 20px;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
 }
 
 .slider-caption.small {
     font-family: var(--primary-font);
     font-size: 18px;
     line-height: 28px;
-    color: var(--grey-color);
+    color: var(--white-color);
     margin-bottom: 20px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
 }
 
+.slider-btn .default-btn {
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4);
+}
 
 /* Slider Pagination */
 .main-slider .swiper-nav{
