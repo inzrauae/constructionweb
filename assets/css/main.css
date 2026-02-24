@@ -1453,7 +1453,7 @@
 }
 
 .service-section .bg-half {
-    background-image: url(../img/service-background.jpg);
+    background-image: url(../img/Untitled\ design\ -\ 2026-02-20T220410.780.png);
     height: 517px;
     filter: grayscale(50%);
 }
@@ -2976,7 +2976,7 @@
     16 Footer Section
 ====================================================*/
 .footer-section {
-    background-image: url(../img/footer-bg.jpg);
+    background: #1a1a1a;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -2987,8 +2987,8 @@
 }
 
 .footer-section:before {
-    background: var(--bg-dark);
-    opacity: 0.9;
+    background: #000000;
+    opacity: 0.5;
     content: "";
     width: 100%;
     height: 100%;
@@ -3029,14 +3029,14 @@
 }
 
 .footer-widget h3 {
-    color: var(--white-color);
+    color: #ffffff;
     font-weight: 700;
     margin-bottom: 20px;
 }
 
 .footer-widget li a,
 .footer-widget p {
-    color: var(--light-grey-color);
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .footer-widget li:not(:last-of-type) {
@@ -3069,7 +3069,7 @@
 }
 
 .footer-widget ul:not(.footer-social) li a:hover {
-    color: var(--primary-color);
+    color: #ffc107;
     margin-left: 15px;
 }
 
