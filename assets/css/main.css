@@ -1452,6 +1452,20 @@
 
 }
 
+.service-section .section-heading h2,
+.service-section .section-heading h3,
+.service-section .section-heading p {
+    color: #ffffff;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.service-section .section-heading {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 30px;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+}
+
 .service-section .bg-half {
     background-image: url(../img/Untitled\ design\ -\ 2026-02-20T220410.780.png);
     height: 517px;
