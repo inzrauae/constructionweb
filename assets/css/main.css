@@ -1069,7 +1069,7 @@
 }
 
 .hero-men {
-    background-image: url(../img/hero-men.png);
+    background-image: url(../img/civil engineer.png);
     background-repeat: no-repeat;
     background-position: bottom center;
     background-size: 100%;
@@ -1480,6 +1480,8 @@
     background-color: #fff;
     border-radius: 3px;
     overflow: hidden;
+    border: 2px solid #e8e8e8;
+    transition: all .3s ease;
 }
 
 .service-item .service-thumb {
@@ -1576,6 +1578,10 @@
 
 .service-item:hover .service-content {
     padding-bottom: 45px;
+}
+
+.service-item:hover .service-item-inner {
+    border-color: var(--primary-color);
 }
 
 .service-cta {
@@ -2609,7 +2615,6 @@
 }
 
 .cta-wrap:before {
-    background-image: url(../img/cta-background.jpg);
     background-repeat: no-repeat;
     background-position: center center;
     width: 100%;
@@ -3053,6 +3058,12 @@
     color: rgba(255, 255, 255, 0.9);
 }
 
+.footer-widget li i {
+    color: rgba(255, 255, 255, 0.9);
+    margin-right: 5px;
+    font-size: 18px;
+}
+
 .footer-widget li:not(:last-of-type) {
     margin-bottom: 10px;
 }
@@ -3100,7 +3111,8 @@
 }
 
 .footer-social li a {
-    background-color: var(--bg-dark);
+    background-color: var(--primary-color);
+    color: #1a1a1a;
     display: inline-block;
     width: 40px;
     height: 40px;
@@ -3112,7 +3124,7 @@
 }
 
 .footer-social li a:after {
-    background-color: var(--primary-color);
+    background-color: #1a1a1a;
     width: 0;
     height: 40px;
     content: "";
