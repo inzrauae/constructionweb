@@ -218,6 +218,33 @@
             testiThumb.push($(item).data('thumb'));
         });
 
+        // Project images per testimonial (for the 3 small circles)
+        var projectThumbImages = [
+            'assets/img/project 1/638725726_122102506377265842_7639280331058260489_n.jpg',
+            'assets/img/project 2/640076061_122102029647265842_4980090804679205735_n.jpg',
+            'assets/img/project 3/641471454_122102677869265842_4239151838560980879_n.jpg'
+        ];
+
+        // All project images pool for random large circle display
+        var allProjectImages = [
+            'assets/img/project 1/638725726_122102506377265842_7639280331058260489_n.jpg',
+            'assets/img/project 1/639419498_122102506359265842_6530702516491603497_n.jpg',
+            'assets/img/project 2/638323918_122102029713265842_7454231584399311908_n.jpg',
+            'assets/img/project 2/638563809_122102029767265842_8643888364461941513_n.jpg',
+            'assets/img/project 2/639705461_122102029563265842_8797096318167209666_n.jpg',
+            'assets/img/project 2/640076061_122102029647265842_4980090804679205735_n.jpg',
+            'assets/img/project 2/636772481_122102029611265842_2104418771663440571_n.jpg',
+            'assets/img/project 3/640119001_122102677839265842_8155284073814382183_n.jpg',
+            'assets/img/project 3/641471454_122102677869265842_4239151838560980879_n.jpg'
+        ];
+        var lastRandomIndex = -1;
+        function getRandomProjectImage() {
+            var idx;
+            do { idx = Math.floor(Math.random() * allProjectImages.length); } while (idx === lastRandomIndex);
+            lastRandomIndex = idx;
+            return allProjectImages[idx];
+        }
+
         var testimonialCarousel = new Swiper('.testimonial-carousel', {
             autoplay: true,
             loop: true,
@@ -226,7 +253,8 @@
                 el: '.testi-custom-pagination',
                 clickable: true,
                 renderBullet: function (index, className) {
-                    return '<span class="' + className + '" style="background-image: url(' + (testiThumb[index]) + ')"></span>';
+                    var img = projectThumbImages[index] || testiThumb[index] || '';
+                    return '<span class="' + className + '" style="background-image: url(\'' + img + '\')"></span>';
                 },
             },
 
@@ -236,10 +264,11 @@
                 prevEl: '.test-nav-wrap .swiper-prev',
             },
             on: {
+                init: function () {
+                    testiThumbActive.css('background-image', 'url("' + getRandomProjectImage() + '")');
+                },
                 slideChangeTransitionStart: function () {
-                    var swiper = this;
-                    var imgThumb = $(swiper.slides[swiper.activeIndex]).data('thumb');
-                    testiThumbActive.css('background-image', 'url(' + imgThumb + ')');
+                    testiThumbActive.css('background-image', 'url("' + getRandomProjectImage() + '")');
                 },
                 resize: function () {
                     this.update();
