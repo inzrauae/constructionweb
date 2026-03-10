@@ -1,6 +1,6 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=$HOME/public_html/
-    - /bin/mkdir -p $DEPLOYPATH
-    - /usr/bin/find . -mindepth 1 -maxdepth 1 ! -name '.git' ! -name '.cpanel.yml' -exec /bin/cp -R {} $DEPLOYPATH \;
+    - export DEPLOYPATH="$HOME/public_html"
+    - /bin/mkdir -p "$DEPLOYPATH"
+    - if /usr/bin/command -v /usr/bin/rsync >/dev/null 2>&1; then /usr/bin/rsync -a --delete --exclude='.git' --exclude='.cpanel.yml' ./ "$DEPLOYPATH/"; else /usr/bin/find . -mindepth 1 -maxdepth 1 ! -name '.git' ! -name '.cpanel.yml' -exec /bin/cp -R {} "$DEPLOYPATH/" \;; fi
