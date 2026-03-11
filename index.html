@@ -156,27 +156,6 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <div class="inquiry-form">
-                                        <h3>Quick Inquiry</h3>
-                                        <form id="inquiryForm">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" name="name" placeholder="Your Name" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="email" class="form-control" name="email" placeholder="Your Email" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="tel" class="form-control" name="phone" placeholder="Phone Number" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" name="service" placeholder="Service Required" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <textarea class="form-control" name="message" rows="3" placeholder="Your Message"></textarea>
-                                            </div>
-                                            <button type="submit" class="default-btn">Send Inquiry</button>
-                                        </form>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -188,46 +167,78 @@
     </div>
     <!--/.slider-section-->
 
-    <section class="about-section bd-bottom padding">
+    <section class="about-section bd-bottom padding estimate-section">
         <div class="container">
-            <div class="row">
+            <div class="row align-items-center">
                 <div class="col-lg-5">
-                    <div class="about-img-wrap">
-                        <img class="wow fade-in-bottom" data-wow-delay="200ms" src="assets/img/no 1 construction company in sri lanka.png" alt="img">
-                        <img class="wow fade-in-right" data-wow-delay="400ms" src="assets/img/Construction (PVT) LTD.jpg" alt="img">
-                        <div class="experience wow fade-in-bottom" data-wow-delay="500ms">
-                            <h3>10+ <span>Years of <br> Excellence</span></h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-7">
                     <div class="section-heading wow fade-in-bottom" data-wow-delay="200ms">
-                        <h3>Welcome to GAURA Construction (Pvt) Ltd!</h3>
-                        <h2>Your trusted construction partner in <span>Sri Lanka!</span></h2>
-                        <p>With over 10 years of excellence in the construction industry, GAURA Construction brings together a highly skilled and experienced team dedicated to delivering quality projects. Based in Kurunegala, Narammala, Sri Lanka, we specialize in comprehensive construction solutions from civil works to complete building projects.</p>
+                        <h3>Cost Estimate Calculator</h3>
+                        <h2>Plan your house budget in <span>minutes</span></h2>
+                        <p>Select house type, add floors and area, then instantly view cost ranges from Budget to Premium. You can also add your land size in perch to check whether it is enough for your total built area.</p>
                     </div>
                     <ul class="about-features">
-                        <li class="wow fade-in-bottom" data-wow-delay="200ms">
+                        <li class="wow fade-in-bottom" data-wow-delay="300ms">
                             <div class="about-icon">
-                                <i class="ci ci-excavators"></i>
+                                <i class="ci ci-building"></i>
                             </div>
                             <div class="about-features-content">
-                                <h3>Quality services</h3>
-                                <p>Construction is a general term meaning the art.</p>
+                                <h3>Instant estimate</h3>
+                                <p>Live calculation with your selected house type rates.</p>
                             </div>
                         </li>
-                        <li class="wow fade-in-bottom" data-wow-delay="400ms">
+                        <li class="wow fade-in-bottom" data-wow-delay="500ms">
                             <div class="about-icon">
                                 <i class="ci ci-engineer-2"></i>
                             </div>
                             <div class="about-features-content">
-                                <h3>Skilled developers</h3>
-                                <p>Construction is a general term meaning the art.</p>
+                                <h3>Land size check</h3>
+                                <p>Warns when available land is less than required area.</p>
                             </div>
                         </li>
                     </ul>
                     <div class="btn-group">
-                        <a href="contact.html" class="default-btn wow fade-in-bottom" data-wow-delay="200ms">Contact Us</a>
+                        <a href="contact.html" class="default-btn wow fade-in-bottom" data-wow-delay="600ms">Get Detailed Quote</a>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="inquiry-form wow fade-in-bottom" data-wow-delay="200ms">
+                        <h3>Home Estimate Tool</h3>
+                        <form id="estimateToolForm">
+                            <div class="form-group">
+                                <label for="houseType">House Type</label>
+                                <select class="form-control native-select" id="houseType" name="houseType">
+                                    <option value="">Select House Type</option>
+                                    <option value="ROOFED">Roofed</option>
+                                    <option value="BOX">Box</option>
+                                    <option value="CABANA">Cabana</option>
+                                    <option value="VILLA">Villa</option>
+                                    <option value="MANSION">Mansion</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="floorCount">No. of Floors</label>
+                                <input type="number" class="form-control" id="floorCount" name="floorCount" placeholder="No. of Floors" min="1" value="1">
+                            </div>
+                            <div class="form-group">
+                                <label for="houseArea">Total House Area (SQFT)</label>
+                                <input type="number" class="form-control" id="houseArea" name="houseArea" placeholder="Total House Area (SQFT)" min="1">
+                            </div>
+                            <div class="form-group">
+                                <label for="landPerch">Land Size (Perch)</label>
+                                <input type="number" class="form-control" id="landPerch" name="landPerch" placeholder="Land Size (Perch)" min="0" step="0.01">
+                            </div>
+                            <div class="estimate-results" id="estimateResults">
+                                <div class="estimate-row"><span>Total Build Area (SQFT)</span><strong id="buildAreaSqft">-</strong></div>
+                                <div class="estimate-row"><span>Land Size (SQFT)</span><strong id="landSqft">-</strong></div>
+                                <div class="estimate-row"><span>Budget</span><strong id="budgetCost">LKR -</strong></div>
+                                <div class="estimate-row"><span>Standard</span><strong id="standardCost">LKR -</strong></div>
+                                <div class="estimate-row"><span>Semi-Luxury</span><strong id="semiLuxuryCost">LKR -</strong></div>
+                                <div class="estimate-row"><span>Luxury</span><strong id="luxuryCost">LKR -</strong></div>
+                                <div class="estimate-row"><span>Premium</span><strong id="premiumCost">LKR -</strong></div>
+                                <p class="estimate-note" id="estimateNote">Enter values to calculate.</p>
+                            </div>
+                            <button type="button" id="estimateCalculateBtn" class="default-btn">Calculate Estimate</button>
+                        </form>
                     </div>
                 </div>
             </div>

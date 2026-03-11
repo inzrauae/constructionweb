@@ -78,6 +78,43 @@
     z-index: 1;
 }
 
+.inquiry-form .estimate-results {
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 15px;
+}
+
+.inquiry-form .estimate-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: #ffffff;
+    padding: 5px 0;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.inquiry-form .estimate-row:last-of-type {
+    border-bottom: none;
+}
+
+.inquiry-form .estimate-row strong {
+    color: #ffffff;
+    font-weight: 700;
+    margin-left: 10px;
+}
+
+.inquiry-form .estimate-note {
+    margin: 10px 0 0;
+    font-size: 12px;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.9);
+}
+
 .inquiry-form .form-control {
     width: 100%;
     padding: 12px 15px;
@@ -206,6 +243,55 @@
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5),
                 0 0 0 1px rgba(255, 255, 255, 0.2) inset,
                 0 4px 16px 0 rgba(255, 102, 0, 0.1);
+}
+
+.estimate-section .inquiry-form {
+    background: rgba(30, 30, 30, 0.92);
+    max-width: 520px;
+    margin-left: auto;
+    padding: 18px;
+    border-radius: 14px;
+    overflow: visible;
+}
+
+.estimate-section .inquiry-form h3 {
+    font-size: 22px;
+    margin-bottom: 14px;
+}
+
+.estimate-section .inquiry-form .form-group {
+    margin-bottom: 10px;
+}
+
+.estimate-section .inquiry-form label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 6px;
+}
+
+.estimate-section .inquiry-form .form-control {
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 1);
+    color: #111111;
+}
+
+.estimate-section .inquiry-form .estimate-results {
+    padding: 10px;
+    margin-bottom: 12px;
+}
+
+.estimate-section .inquiry-form .estimate-row {
+    font-size: 12px;
+    padding: 4px 0;
+}
+
+.estimate-section .inquiry-form .default-btn {
+    padding: 11px 14px;
+    font-size: 14px;
 }
 
 /* Smooth animations */

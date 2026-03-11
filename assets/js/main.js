@@ -371,7 +371,7 @@
         new WOW().init();
 
         // Nice Select Active
-        $('select').niceSelect();
+        $('select').not('.native-select').niceSelect();
 
         // Current Year
         var currentYear = new Date().getFullYear();
