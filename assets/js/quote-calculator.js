@@ -30,6 +30,23 @@ document.addEventListener('DOMContentLoaded', function () {
     const premiumCostOutput = document.getElementById('premiumCost');
     const estimateNote = document.getElementById('estimateNote');
 
+    function restoreNativeSelect(selectElement) {
+        if (!selectElement) {
+            return;
+        }
+
+        const nextNode = selectElement.nextElementSibling;
+        if (nextNode && nextNode.classList && nextNode.classList.contains('nice-select')) {
+            nextNode.remove();
+        }
+
+        selectElement.style.display = 'block';
+        selectElement.style.position = 'static';
+        selectElement.style.opacity = '1';
+        selectElement.style.pointerEvents = 'auto';
+        selectElement.removeAttribute('tabindex');
+    }
+
     function formatLkr(amount) {
         return 'LKR ' + new Intl.NumberFormat('en-US', { maximumFractionDigits: 2 }).format(amount);
     }
@@ -86,6 +103,8 @@ document.addEventListener('DOMContentLoaded', function () {
         event.preventDefault();
         updateEstimate();
     });
+
+    restoreNativeSelect(houseTypeInput);
 
     if (calculateButton) {
         calculateButton.addEventListener('click', updateEstimate);
