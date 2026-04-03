@@ -1,6 +1,14 @@
 RewriteEngine On
 DirectoryIndex index.html
 
+<IfModule mod_headers.c>
+	<FilesMatch "\.(html?)$">
+		Header set Cache-Control "no-cache, no-store, must-revalidate"
+		Header set Pragma "no-cache"
+		Header set Expires "0"
+	</FilesMatch>
+</IfModule>
+
 # Force index variants to main homepage
 RewriteRule ^index(?:\.html)?$ / [R=301,L]
 
