@@ -1,5 +1,8 @@
 RewriteEngine On
 
+# Force old alternate homepage to main homepage
+RewriteRule ^index-2(?:\.html)?$ / [R=301,L]
+
 # Redirect direct .html requests to extensionless URLs
 RewriteCond %{THE_REQUEST} \s/+(.*?)\.html[\s?] [NC]
 RewriteRule ^ %1 [R=301,L]
