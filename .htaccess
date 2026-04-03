@@ -1,6 +1,9 @@
 RewriteEngine On
 DirectoryIndex index.html
 
+# Force index variants to main homepage
+RewriteRule ^index(?:\.html)?$ / [R=301,L]
+
 # Force old alternate homepage to main homepage
 RewriteRule ^index-2(?:\.html)?$ / [R=301,L]
 
