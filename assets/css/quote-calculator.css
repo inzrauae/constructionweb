@@ -44,6 +44,13 @@
     animation: none !important;
 }
 
+.slider-section .slider-btn,
+.slider-section .slider-btn .default-btn {
+    position: relative;
+    z-index: 5;
+    pointer-events: auto;
+}
+
 .inquiry-form::before {
     content: '';
     position: absolute;
@@ -277,6 +284,11 @@
     border: 1px solid rgba(255, 255, 255, 0.8);
     background: rgba(255, 255, 255, 1);
     color: #111111;
+}
+
+.estimate-section .inquiry-form .form-control.input-error {
+    border-color: #ff4d4f;
+    box-shadow: 0 0 0 2px rgba(255, 77, 79, 0.2);
 }
 
 .estimate-section .inquiry-form .native-select {
