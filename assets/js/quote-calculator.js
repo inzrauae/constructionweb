@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const perchToSqft = 271;
 
     const houseTypeInput = document.getElementById('houseType');
-    const floorCountInput = document.getElementById('floorCount');
     const houseAreaInput = document.getElementById('houseArea');
     const landPerchInput = document.getElementById('landPerch');
     const estimateMobileInput = document.getElementById('estimateMobile');
@@ -61,7 +60,6 @@ document.addEventListener('DOMContentLoaded', function () {
             'Mobile: ' + (lead.mobile || '-'),
             'Email: ' + (lead.email || '-'),
             'House Type: ' + lead.houseType,
-            'Floors: ' + lead.floorCount,
             'Total Build Area (SQFT): ' + lead.totalArea,
             'Land Size (SQFT): ' + lead.landSqft,
             'Budget: ' + lead.budget,
@@ -104,7 +102,6 @@ document.addEventListener('DOMContentLoaded', function () {
     function updateEstimate(options) {
         const triggerLead = options && options.triggerLead;
         const houseType = (houseTypeInput.value || '').trim();
-        const floorCount = Number.parseFloat(floorCountInput.value || '0');
         const houseArea = Number.parseFloat(houseAreaInput.value || '0');
         const landPerch = Number.parseFloat(landPerchInput.value || '0');
 
@@ -120,12 +117,11 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        const normalizedFloorCount = floorCount > 0 ? floorCount : 1;
         const effectiveHouseType = houseType || 'ROOFED';
         let totalAreaSqft = 0;
 
         if (houseArea > 0) {
-            totalAreaSqft = houseArea * normalizedFloorCount;
+            totalAreaSqft = houseArea;
         } else if (landSqft > 0) {
             totalAreaSqft = landSqft;
         } else {
@@ -155,7 +151,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 mobile: estimateMobileInput ? estimateMobileInput.value.trim() : '',
                 email: estimateEmailInput ? estimateEmailInput.value.trim() : '',
                 houseType: effectiveHouseType,
-                floorCount: normalizedFloorCount,
                 totalArea: new Intl.NumberFormat('en-US', { maximumFractionDigits: 2 }).format(totalAreaSqft),
                 landSqft: landSqft > 0 ? new Intl.NumberFormat('en-US', { maximumFractionDigits: 2 }).format(landSqft) : '-',
                 budget: budgetCostOutput.textContent,
@@ -171,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function () {
         } else if (landSqft > 0 && landSqft < totalAreaSqft) {
             estimateNote.textContent = 'Warning: Land size is less than total house area.';
         } else {
-            estimateNote.textContent = 'Estimated using selected type, floors and total area.';
+            estimateNote.textContent = 'Estimated using selected type and total area.';
         }
     }
 
