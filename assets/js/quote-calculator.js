@@ -70,12 +70,6 @@ document.addEventListener('DOMContentLoaded', function () {
         ].join('\n');
     }
 
-    function sendLeadToWhatsApp(lead) {
-        const message = buildLeadMessage(lead);
-        const whatsappUrl = 'https://wa.me/' + companyWhatsAppNumber + '?text=' + encodeURIComponent(message);
-        window.open(whatsappUrl, '_blank');
-    }
-
     function resetCostOutputs() {
         budgetCostOutput.textContent = 'LKR -';
         standardCostOutput.textContent = 'LKR -';
@@ -99,8 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
         estimateEmailInput.classList.remove('input-error');
     }
 
-    function updateEstimate(options) {
-        const triggerLead = options && options.triggerLead;
+    function updateEstimate() {
         const houseType = (houseTypeInput.value || '').trim();
         const houseArea = Number.parseFloat(houseAreaInput.value || '0');
         const landPerch = Number.parseFloat(landPerchInput.value || '0');
@@ -146,21 +139,6 @@ document.addEventListener('DOMContentLoaded', function () {
         luxuryCostOutput.textContent = formatLkr(totalAreaSqft * selectedRates.luxury);
         premiumCostOutput.textContent = formatLkr(totalAreaSqft * selectedRates.premium);
 
-        if (triggerLead) {
-            sendLeadToWhatsApp({
-                mobile: estimateMobileInput ? estimateMobileInput.value.trim() : '',
-                email: estimateEmailInput ? estimateEmailInput.value.trim() : '',
-                houseType: effectiveHouseType,
-                totalArea: new Intl.NumberFormat('en-US', { maximumFractionDigits: 2 }).format(totalAreaSqft),
-                landSqft: landSqft > 0 ? new Intl.NumberFormat('en-US', { maximumFractionDigits: 2 }).format(landSqft) : '-',
-                budget: budgetCostOutput.textContent,
-                standard: standardCostOutput.textContent,
-                semiLuxury: semiLuxuryCostOutput.textContent,
-                luxury: luxuryCostOutput.textContent,
-                premium: premiumCostOutput.textContent
-            });
-        }
-
         if (houseArea <= 0 && landSqft > 0) {
             estimateNote.textContent = 'Estimated using land size as total build area (default type: Roofed).';
         } else if (landSqft > 0 && landSqft < totalAreaSqft) {
@@ -168,6 +146,25 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             estimateNote.textContent = 'Estimated using selected type and total area.';
         }
+    }
+
+    function sendLeadByEmail(lead) {
+        var formData = new FormData();
+        formData.append('mobile', lead.mobile);
+        formData.append('email', lead.email);
+        formData.append('houseType', lead.houseType);
+        formData.append('totalArea', lead.totalArea);
+        formData.append('landSqft', lead.landSqft);
+        formData.append('budget', lead.budget);
+        formData.append('standard', lead.standard);
+        formData.append('semiLuxury', lead.semiLuxury);
+        formData.append('luxury', lead.luxury);
+        formData.append('premium', lead.premium);
+
+        fetch('php/estimate-lead.php', {
+            method: 'POST',
+            body: formData
+        }).catch(function () { /* fire and forget */ });
     }
 
     estimateToolForm.addEventListener('submit', function (event) {
@@ -179,7 +176,59 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (calculateButton) {
         calculateButton.addEventListener('click', function () {
-            updateEstimate({ triggerLead: true });
+            var mobileValue = estimateMobileInput ? estimateMobileInput.value.trim() : '';
+            var emailValue = estimateEmailInput ? estimateEmailInput.value.trim() : '';
+
+            if (!mobileValue && !emailValue) {
+                if (estimateMobileInput) estimateMobileInput.classList.add('input-error');
+                if (estimateEmailInput) estimateEmailInput.classList.add('input-error');
+                if (estimateNote) estimateNote.textContent = 'Please enter your mobile number or email to get your estimate.';
+                return;
+            }
+
+            var houseType = (houseTypeInput.value || '').trim();
+            var houseArea = Number.parseFloat(houseAreaInput.value || '0');
+            var landPerch = Number.parseFloat(landPerchInput.value || '0');
+            var landSqft = landPerch > 0 ? landPerch * perchToSqft : 0;
+            var effectiveHouseType = houseType || 'ROOFED';
+            var totalAreaSqft = 0;
+
+            if (houseArea > 0) {
+                totalAreaSqft = houseArea;
+            } else if (landSqft > 0) {
+                totalAreaSqft = landSqft;
+            } else {
+                if (estimateNote) estimateNote.textContent = 'Enter area or land size to calculate.';
+                return;
+            }
+
+            var selectedRates = priceMatrix[effectiveHouseType];
+            if (!selectedRates) {
+                if (estimateNote) estimateNote.textContent = 'Please select a valid house type.';
+                return;
+            }
+
+            var lead = {
+                mobile: mobileValue,
+                email: emailValue,
+                houseType: effectiveHouseType,
+                totalArea: new Intl.NumberFormat('en-US', { maximumFractionDigits: 2 }).format(totalAreaSqft),
+                landSqft: landSqft > 0 ? new Intl.NumberFormat('en-US', { maximumFractionDigits: 2 }).format(landSqft) : '-',
+                budget: formatLkr(totalAreaSqft * selectedRates.budget),
+                standard: formatLkr(totalAreaSqft * selectedRates.standard),
+                semiLuxury: formatLkr(totalAreaSqft * selectedRates.semiLuxury),
+                luxury: formatLkr(totalAreaSqft * selectedRates.luxury),
+                premium: formatLkr(totalAreaSqft * selectedRates.premium)
+            };
+
+            sessionStorage.setItem('estimateResult', JSON.stringify(lead));
+
+            sendLeadByEmail(lead);
+
+            var whatsappMessage = buildLeadMessage(lead);
+            window.open('https://wa.me/' + companyWhatsAppNumber + '?text=' + encodeURIComponent(whatsappMessage), '_blank');
+
+            window.location.href = 'quote-result';
         });
     }
 
