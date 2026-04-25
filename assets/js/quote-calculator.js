@@ -237,3 +237,85 @@ document.addEventListener('DOMContentLoaded', function () {
 
     updateEstimate();
 });
+
+// ============================================================
+// Construction Cost Per Square Feet Calculator (standalone)
+// No email gate — instant calculation for SEO/GEO visibility
+// ============================================================
+(function () {
+    var costCalcForm = document.getElementById('costCalcForm');
+    if (!costCalcForm) { return; }
+
+    var sqftRates = {
+        ROOFED:  { budget: 6000,  standard: 7000,  semiLuxury: 10000, luxury: 15000, premium: 30000 },
+        BOX:     { budget: 7000,  standard: 8000,  semiLuxury: 12000, luxury: 17000, premium: 35000 },
+        CABANA:  { budget: 3500,  standard: 5500,  semiLuxury: 7500,  luxury: 11000, premium: 25000 },
+        VILLA:   { budget: 10000, standard: 12000, semiLuxury: 16000, luxury: 15000, premium: 40000 },
+        MANSION: { budget: 17000, standard: 25000, semiLuxury: 31000, luxury: 40000, premium: 75000 }
+    };
+
+    var typeLabels = {
+        ROOFED:  'Roofed House (Pitched Roof)',
+        BOX:     'Box-Type / Flat Roof',
+        CABANA:  'Cabana / Annexe',
+        VILLA:   'Villa',
+        MANSION: 'Mansion'
+    };
+
+    var waBase = 'https://wa.me/94713720667';
+
+    function fmtLkr(n) {
+        return 'LKR\u00a0' + new Intl.NumberFormat('en-US').format(Math.round(n));
+    }
+
+    function calcCost() {
+        var sqft = parseFloat(document.getElementById('calcSqft').value) || 0;
+        var type = document.getElementById('calcType').value || 'ROOFED';
+        var rates = sqftRates[type] || sqftRates.ROOFED;
+        var resultsEl = document.getElementById('calcResults');
+        var placeholder = document.getElementById('calcPlaceholder');
+        var waBtn = document.getElementById('calcWhatsAppBtn');
+
+        if (sqft <= 0) {
+            resultsEl.style.display = 'none';
+            if (placeholder) { placeholder.style.display = 'flex'; }
+            if (waBtn) { waBtn.href = waBase; }
+            return;
+        }
+
+        if (placeholder) { placeholder.style.display = 'none'; }
+        resultsEl.style.display = 'block';
+
+        document.getElementById('calcSqftDisplay').textContent =
+            new Intl.NumberFormat('en-US').format(sqft) + ' sqft';
+        document.getElementById('calcBudget').textContent     = fmtLkr(sqft * rates.budget);
+        document.getElementById('calcStandard').textContent   = fmtLkr(sqft * rates.standard);
+        document.getElementById('calcSemiLuxury').textContent = fmtLkr(sqft * rates.semiLuxury);
+        document.getElementById('calcLuxury').textContent     = fmtLkr(sqft * rates.luxury);
+        document.getElementById('calcPremium').textContent    = fmtLkr(sqft * rates.premium);
+
+        // Build pre-filled WhatsApp message with calculator results
+        var msg = [
+            'Hi Gaura Construction! 👋',
+            '',
+            'I used your Cost Calculator and here are my estimates:',
+            '',
+            '🏠 House Type: ' + (typeLabels[type] || type),
+            '📏 Build Area: ' + new Intl.NumberFormat('en-US').format(sqft) + ' sqft',
+            '',
+            '💰 Cost Estimates:',
+            '  • Budget Finish: ' + fmtLkr(sqft * rates.budget),
+            '  • Standard Finish: ' + fmtLkr(sqft * rates.standard),
+            '  • Semi-Luxury Finish: ' + fmtLkr(sqft * rates.semiLuxury),
+            '  • Luxury Finish: ' + fmtLkr(sqft * rates.luxury),
+            '  • Premium / Signature: ' + fmtLkr(sqft * rates.premium),
+            '',
+            'Please contact me with a detailed quotation. Thank you!'
+        ].join('\n');
+
+        if (waBtn) { waBtn.href = waBase + '?text=' + encodeURIComponent(msg); }
+    }
+
+    costCalcForm.addEventListener('input', calcCost);
+    costCalcForm.addEventListener('change', calcCost);
+}());

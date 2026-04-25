@@ -153,6 +153,14 @@
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
 }
 
+.slider-caption.big h1 {
+    color: var(--white-color);
+    font-size: inherit;
+    line-height: inherit;
+    font-weight: inherit;
+    margin: 0;
+}
+
 .slider-caption.small {
     font-family: var(--primary-font);
     font-size: 18px;
