@@ -1,0 +1,581 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="Read the Gaura Construction company profile 2026 as an interactive flipbook. Explore 75+ projects, construction services and expert team — online or download PDF.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0f172a">
+    <title>Interactive Flipbook — Gaura Construction Company Profile 2026</title>
+    <link rel="canonical" href="https://www.gauraconstruction.lk/flipbook">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.gauraconstruction.lk/flipbook">
+    <meta property="og:title" content="Interactive Flipbook — Gaura Construction Company Profile 2026">
+    <meta property="og:description" content="Read the Gaura Construction company profile 2026 as an interactive flipbook online.">
+    <meta property="og:image" content="https://www.gauraconstruction.lk/assets/img/gaura.jpg">
+    <link rel="shortcut icon" type="image/png" href="Logos + SM/Untitled design - 2026-03-06T042910.066.png">
+    <link rel="stylesheet" href="assets/css/line-awesome.min.css">
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background: #0f172a;
+            color: #e5e7eb;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* ─── Top bar ─── */
+        #viewer-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            background: #1e293b;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding: 0 16px;
+            height: 52px;
+            flex-shrink: 0;
+            z-index: 100;
+        }
+        .vbar-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            min-width: 0;
+        }
+        .vbar-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            white-space: nowrap;
+            transition: color 0.15s;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .vbar-back:hover { color: #f97316; }
+        .vbar-logo {
+            height: 28px;
+            width: auto;
+            object-fit: contain;
+        }
+        .vbar-title {
+            color: #e2e8f0;
+            font-size: 13px;
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .vbar-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+        .vbar-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.07);
+            color: #cbd5e1;
+            border: 1px solid rgba(255,255,255,0.12);
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.15s;
+            text-decoration: none;
+            min-height: 36px;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .vbar-btn:hover { background: rgba(255,255,255,0.14); color: #fff; }
+        .vbar-btn.accent { background: #f97316; border-color: #f97316; color: #fff; }
+        .vbar-btn.accent:hover { background: #ea6706; }
+
+        /* ─── Main viewer area ─── */
+        #viewer-main {
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Loading overlay */
+        #fb-loading {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #0f172a;
+            z-index: 10;
+            padding: 24px;
+        }
+        .fb-spinner {
+            width: 52px;
+            height: 52px;
+            border: 4px solid rgba(255,255,255,0.1);
+            border-top-color: #f97316;
+            border-radius: 50%;
+            animation: fbspin 0.75s linear infinite;
+            margin-bottom: 18px;
+        }
+        @keyframes fbspin { to { transform: rotate(360deg); } }
+        #fb-loading p { color: #d1d5db; font-size: 15px; }
+        #fb-progress { color: #9ca3af; font-size: 13px; margin-top: 8px; }
+
+        /* Error */
+        #fb-error {
+            display: none;
+            position: absolute;
+            inset: 0;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 24px;
+            background: #0f172a;
+            z-index: 10;
+        }
+        #fb-error p { color: #f87171; font-size: 15px; margin-bottom: 20px; }
+        .fb-dl-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: #f97316;
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            min-height: 44px;
+        }
+
+        /* Book wrapper */
+        #fb-wrapper {
+            display: none;
+            flex: 1 1 auto;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            overflow: hidden;
+            touch-action: none;
+            overscroll-behavior: contain;
+            padding: 16px 8px 0;
+        }
+
+        /* Page faces */
+        .fb-page { background: #fff; overflow: hidden; box-sizing: border-box; }
+        .fb-page img { display: block; width: 100%; height: 100%; object-fit: fill; pointer-events: none; user-select: none; -webkit-user-drag: none; }
+        .fb-page.fb-cover { background: #1a1a2e; }
+
+        /* ─── Controls bar ─── */
+        #fb-controls {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            background: #1e293b;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding: 10px 12px;
+            flex-shrink: 0;
+            width: 100%;
+        }
+        .fb-btn {
+            background: rgba(255,255,255,0.08);
+            color: #e2e8f0;
+            border: 1px solid rgba(255,255,255,0.14);
+            padding: 8px 18px;
+            border-radius: 999px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: background 0.15s;
+            min-height: 40px;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .fb-btn:hover { background: #f97316; border-color: #f97316; color: #fff; }
+        .fb-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+        #fb-page-info {
+            color: #94a3b8;
+            font-size: 13px;
+            min-width: 100px;
+            text-align: center;
+        }
+        .fb-dl-ctrl {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #f97316;
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            min-height: 40px;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .fb-dl-ctrl:hover { background: #ea6706; color: #fff; text-decoration: none; }
+        .fb-fullscreen-btn {
+            background: rgba(255,255,255,0.06);
+            color: #94a3b8;
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 8px 14px;
+            border-radius: 999px;
+            cursor: pointer;
+            font-size: 13px;
+            min-height: 40px;
+            transition: all 0.15s;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .fb-fullscreen-btn:hover { background: rgba(255,255,255,0.13); color: #fff; }
+
+        /* Thumbnail strip */
+        #fb-thumbs {
+            display: none;
+            align-items: center;
+            gap: 6px;
+            background: #1a2436;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            padding: 8px 12px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            scroll-snap-type: x mandatory;
+            flex-shrink: 0;
+            width: 100%;
+        }
+        #fb-thumbs::-webkit-scrollbar { display: none; }
+        .fb-thumb {
+            width: 36px;
+            height: 50px;
+            flex-shrink: 0;
+            scroll-snap-align: start;
+            object-fit: cover;
+            border: 2px solid rgba(255,255,255,0.08);
+            border-radius: 3px;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: border-color 0.15s, opacity 0.15s;
+            touch-action: manipulation;
+        }
+        .fb-thumb:hover, .fb-thumb.active { border-color: #f97316; opacity: 1; }
+
+        /* Hint */
+        .fb-hint {
+            color: #475569;
+            font-size: 11px;
+            text-align: center;
+            padding: 4px 12px 6px;
+            background: #1e293b;
+            border-top: 1px solid rgba(255,255,255,0.04);
+            flex-shrink: 0;
+        }
+
+        /* Fullscreen adjustments */
+        body:fullscreen, body:-webkit-full-screen {
+            overflow: hidden;
+        }
+
+        /* Mobile */
+        @media (max-width: 576px) {
+            .vbar-title { display: none; }
+            .vbar-btn span { display: none; }
+            .vbar-btn { padding: 6px 10px; }
+            .fb-fullscreen-btn { display: none; }
+            #fb-wrapper { padding: 8px 4px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top bar -->
+    <div id="viewer-bar">
+        <div class="vbar-left">
+            <a class="vbar-back" href="company-profile" title="Back to Company Profile">
+                <i class="las la-arrow-left"></i> Back
+            </a>
+            <img class="vbar-logo" src="Logos + SM/Logos + SM/Logo Transparent H.png" alt="Gaura Construction">
+            <span class="vbar-title">Company Profile 2026</span>
+        </div>
+        <div class="vbar-right">
+            <a class="vbar-btn" href="contact"><i class="las la-phone"></i> <span>Get a Quote</span></a>
+            <a class="vbar-btn accent" href="assets/profile/gaura construction.pdf" download>
+                <i class="las la-download"></i> <span>Download PDF</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main viewer -->
+    <div id="viewer-main">
+
+        <!-- Loading -->
+        <div id="fb-loading">
+            <div class="fb-spinner"></div>
+            <p>Loading company profile&hellip;</p>
+            <p id="fb-progress"></p>
+        </div>
+
+        <!-- Error fallback -->
+        <div id="fb-error">
+            <p><i class="las la-exclamation-triangle" style="font-size:36px;display:block;margin-bottom:14px;"></i>
+            Could not load the interactive viewer.</p>
+            <a href="assets/profile/gaura construction.pdf" download class="fb-dl-btn">
+                <i class="las la-download"></i> Download Company Profile
+            </a>
+        </div>
+
+        <!-- Book -->
+        <div id="fb-wrapper">
+            <div id="fb-book"></div>
+        </div>
+
+    </div>
+
+    <!-- Thumbnail strip -->
+    <div id="fb-thumbs"></div>
+
+    <!-- Controls -->
+    <div id="fb-controls">
+        <button class="fb-btn" id="fb-prev"><i class="las la-angle-left"></i> Prev</button>
+        <span id="fb-page-info">Page 1</span>
+        <button class="fb-btn" id="fb-next">Next <i class="las la-angle-right"></i></button>
+        <a href="assets/profile/gaura construction.pdf" download class="fb-dl-ctrl">
+            <i class="las la-download"></i> Download
+        </a>
+        <button class="fb-fullscreen-btn" id="fb-fullscreen"><i class="las la-expand"></i> Fullscreen</button>
+    </div>
+
+    <p class="fb-hint">Click page edges to flip &bull; Arrow keys navigate &bull; Swipe on mobile</p>
+
+    <!-- PDF.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <!-- StPageFlip -->
+    <script src="https://unpkg.com/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
+
+    <script>
+    (function () {
+        'use strict';
+
+        var PDF_URL       = 'assets/profile/gaura construction.pdf';
+        var isMobileAgent = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent) || window.innerWidth < 768;
+        var SCALE         = isMobileAgent ? 1.2 : 1.5;
+        var JPEG_Q        = isMobileAgent ? 0.80 : 0.88;
+
+        var elLoading  = document.getElementById('fb-loading');
+        var elProgress = document.getElementById('fb-progress');
+        var elError    = document.getElementById('fb-error');
+        var elWrapper  = document.getElementById('fb-wrapper');
+        var elBook     = document.getElementById('fb-book');
+        var elControls = document.getElementById('fb-controls');
+        var elPageInfo = document.getElementById('fb-page-info');
+        var elThumbs   = document.getElementById('fb-thumbs');
+        var elPrev     = document.getElementById('fb-prev');
+        var elNext     = document.getElementById('fb-next');
+        var elFullscr  = document.getElementById('fb-fullscreen');
+
+        var flipBook   = null;
+        var totalPages = 0;
+
+        function showError() {
+            elLoading.style.display = 'none';
+            elError.style.display   = 'flex';
+        }
+
+        function updatePageInfo(current) {
+            elPageInfo.textContent = 'Page ' + current + ' of ' + totalPages;
+            var thumbs = elThumbs.querySelectorAll('.fb-thumb');
+            thumbs.forEach(function (t, i) { t.classList.toggle('active', i === current - 1); });
+            if (thumbs[current - 1]) thumbs[current - 1].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        }
+
+        function renderPage(pdf, num, scale) {
+            return pdf.getPage(num).then(function (page) {
+                var vp     = page.getViewport({ scale: scale });
+                var canvas = document.createElement('canvas');
+                canvas.width  = vp.width;
+                canvas.height = vp.height;
+                var ctx = canvas.getContext('2d');
+                ctx.fillStyle = '#ffffff';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                return page.render({ canvasContext: ctx, viewport: vp }).promise.then(function () {
+                    return {
+                        dataUrl: canvas.toDataURL('image/jpeg', JPEG_Q),
+                        width:   Math.round(vp.width),
+                        height:  Math.round(vp.height)
+                    };
+                });
+            });
+        }
+
+        async function init() {
+            if (typeof pdfjsLib === 'undefined' || typeof St === 'undefined') {
+                showError(); return;
+            }
+
+            pdfjsLib.GlobalWorkerOptions.workerSrc =
+                'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+            try {
+                var pdf = await pdfjsLib.getDocument(PDF_URL).promise;
+                totalPages = pdf.numPages;
+
+                var pageImages = [];
+                var pageW = 0, pageH = 0;
+
+                for (var i = 1; i <= totalPages; i++) {
+                    elProgress.textContent = 'Rendering page ' + i + ' of ' + totalPages + '…';
+                    var rendered = await renderPage(pdf, i, SCALE);
+                    pageImages.push(rendered.dataUrl);
+                    if (i === 1) { pageW = rendered.width; pageH = rendered.height; }
+                }
+
+                elProgress.textContent = 'Preparing flipbook…';
+
+                /* Build page elements */
+                pageImages.forEach(function (src, idx) {
+                    var div = document.createElement('div');
+                    div.className = 'fb-page' + (idx === 0 || idx === totalPages - 1 ? ' fb-cover' : '');
+                    var img = document.createElement('img');
+                    img.src = src;
+                    img.alt = 'Company Profile page ' + (idx + 1);
+                    img.draggable = false;
+                    div.appendChild(img);
+                    elBook.appendChild(div);
+                });
+
+                /* Build thumbnails */
+                pageImages.forEach(function (src, idx) {
+                    var thumb = document.createElement('img');
+                    thumb.src       = src;
+                    thumb.className = 'fb-thumb' + (idx === 0 ? ' active' : '');
+                    thumb.alt       = 'Page ' + (idx + 1);
+                    thumb.title     = 'Page ' + (idx + 1);
+                    thumb.addEventListener('click', function () { if (flipBook) flipBook.flip(idx); });
+                    elThumbs.appendChild(thumb);
+                });
+
+                /* Responsive dimensions — fit inside viewer-main */
+                var vw       = window.innerWidth;
+                var barH     = 52;   /* top bar */
+                var ctrlH    = 58;   /* controls + hint */
+                var thumbH   = 68;   /* thumbs */
+                var hintH    = 24;
+                var availH   = window.innerHeight - barH - ctrlH - thumbH - hintH - 24;
+                var isMobile = vw < 768;
+                var maxBookW = isMobile ? vw - 16 : Math.min(vw - 40, 1400);
+                var singleW  = isMobile ? maxBookW : Math.floor(maxBookW / 2);
+                var singleH  = Math.round(singleW * (pageH / pageW));
+
+                /* Clamp to available height */
+                if (singleH > availH) {
+                    singleH = availH;
+                    singleW = Math.round(singleH * (pageW / pageH));
+                }
+                singleW = Math.max(240, Math.min(singleW, pageW));
+                singleH = Math.max(340, Math.min(singleH, pageH));
+
+                /* Initialise PageFlip */
+                flipBook = new St.PageFlip(elBook, {
+                    width:               singleW,
+                    height:              singleH,
+                    size:                'fixed',
+                    minWidth:            240,
+                    maxWidth:            pageW,
+                    minHeight:           340,
+                    maxHeight:           pageH,
+                    showCover:           true,
+                    drawShadow:          true,
+                    flippingTime:        600,
+                    usePortrait:         isMobile,
+                    startZIndex:         0,
+                    autoSize:            false,
+                    mobileScrollSupport: false,
+                    clickEventForward:   true,
+                    useMouseEvents:      true,
+                    swipeDistance:       30,
+                    showPageCorners:     true,
+                    disableFlipByClick:  false
+                });
+
+                flipBook.loadFromHTML(elBook.querySelectorAll('.fb-page'));
+
+                flipBook.on('flip', function (e) { updatePageInfo(e.data + 1); });
+
+                /* Show UI */
+                elLoading.style.display  = 'none';
+                elWrapper.style.display  = 'flex';
+                elControls.style.display = 'flex';
+                elThumbs.style.display   = 'flex';
+                updatePageInfo(1);
+
+                /* Block page scroll when touching the book */
+                elWrapper.addEventListener('touchmove', function (e) { e.preventDefault(); }, { passive: false });
+
+                /* Controls */
+                elPrev.addEventListener('click', function () { flipBook.flipPrev('bottom'); });
+                elNext.addEventListener('click', function () { flipBook.flipNext('bottom'); });
+
+                document.addEventListener('keydown', function (e) {
+                    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+                    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') flipBook.flipNext('bottom');
+                    if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   flipBook.flipPrev('bottom');
+                });
+
+                /* Fullscreen */
+                elFullscr.addEventListener('click', function () {
+                    if (!document.fullscreenElement) {
+                        (document.body.requestFullscreen || document.body.webkitRequestFullscreen).call(document.body);
+                    } else {
+                        (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+                    }
+                });
+                document.addEventListener('fullscreenchange', function () {
+                    var icon = elFullscr.querySelector('i');
+                    if (document.fullscreenElement) {
+                        icon.className = 'las la-compress'; elFullscr.title = 'Exit fullscreen';
+                    } else {
+                        icon.className = 'las la-expand'; elFullscr.title = 'Toggle fullscreen';
+                    }
+                });
+
+            } catch (err) {
+                console.error('Flipbook error:', err);
+                showError();
+            }
+        }
+
+        /* Auto-start */
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function () { setTimeout(init, 80); });
+        } else {
+            setTimeout(init, 80);
+        }
+
+    })();
+    </script>
+
+</body>
+</html>
