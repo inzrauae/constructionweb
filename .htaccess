@@ -15,6 +15,11 @@ RewriteRule ^index(?:\.html)?$ / [R=301,L]
 # Force old alternate homepage to main homepage
 RewriteRule ^index-2(?:\.html)?$ / [R=301,L]
 
+# Redirect legacy blog routes to active pages
+RewriteRule ^blog-grid(?:\.html)?$ /blog [R=301,L]
+RewriteRule ^blog-classic(?:\.html)?$ /blog [R=301,L]
+RewriteRule ^blog-details(?:\.html)?$ /blog-best-construction-company-kurunegala [R=301,L]
+
 # Redirect direct .html requests to extensionless URLs
 RewriteCond %{THE_REQUEST} \s/+(.*?)\.html[\s?] [NC]
 RewriteRule ^ %1 [R=301,L]
