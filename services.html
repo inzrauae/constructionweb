@@ -221,7 +221,7 @@
         <div class="container">
             <div class="row gy-4">
                 <div class="col-lg-3 col-md-6 sm-padding">
-                    <div class="service-item">
+                    <div class="service-item service-card-link" data-link="civil-constructions-sri-lanka" role="link" tabindex="0" aria-label="Civil Constructions service page">
                         <div class="service-item-inner">
                             <div class="service-thumb">
                                 <img src="assets/img/service images/civil.jpg" alt="thumb">
@@ -230,7 +230,7 @@
                                 <div class="service-icon">
                                     <i class="ci ci-building"></i>
                                 </div>
-                                <h3>Civil Constructions</h3>
+                                <h3><a href="civil-constructions-sri-lanka">Civil Constructions</a></h3>
                                 <p>Expert civil engineering and infrastructure development with quality assurance and timely delivery.</p>
                                 <a class="read-more" href="civil-constructions-sri-lanka">Read More</a>
                             </div>
@@ -238,7 +238,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 sm-padding">
-                    <div class="service-item">
+                    <div class="service-item service-card-link" data-link="renovations-sri-lanka" role="link" tabindex="0" aria-label="Renovations service page">
                         <div class="service-item-inner">
                             <div class="service-thumb">
                                 <img src="assets/img/service images/renovation.jpg" alt="thumb">
@@ -247,7 +247,7 @@
                                 <div class="service-icon">
                                     <i class="ci ci-paint-brush"></i>
                                 </div>
-                                <h3>Renovations</h3>
+                                <h3><a href="renovations-sri-lanka">Renovations</a></h3>
                                 <p>Transform and modernize your property with our comprehensive renovation and remodeling solutions.</p>
                                 <a class="read-more" href="renovations-sri-lanka">Read More</a>
                             </div>
@@ -255,7 +255,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 sm-padding">
-                    <div class="service-item">
+                    <div class="service-item service-card-link" data-link="interior-design-sri-lanka" role="link" tabindex="0" aria-label="Interiors and Fitouts service page">
                         <div class="service-item-inner">
                             <div class="service-thumb">
                                 <img src="assets/img/service images/intirior.jpg" alt="thumb">
@@ -264,7 +264,7 @@
                                 <div class="service-icon">
                                     <i class="ci ci-plan"></i>
                                 </div>
-                                <h3>Interiors & Fitouts</h3>
+                                <h3><a href="interior-design-sri-lanka">Interiors & Fitouts</a></h3>
                                 <p>Premium interior design and custom fitout services for residential and commercial spaces.</p>
                                 <a class="read-more" href="interior-design-sri-lanka">Read More</a>
                             </div>
@@ -272,7 +272,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 sm-padding">
-                    <div class="service-item">
+                    <div class="service-item service-card-link" data-link="mep-services-sri-lanka" role="link" tabindex="0" aria-label="MEP Services page">
                         <div class="service-item-inner">
                             <div class="service-thumb">
                                 <img src="assets/img/service images/mep.jpg" alt="thumb">
@@ -281,7 +281,7 @@
                                 <div class="service-icon">
                                     <i class="ci ci-water-system"></i>
                                 </div>
-                                <h3>MEP Services</h3>
+                                <h3><a href="mep-services-sri-lanka">MEP Services</a></h3>
                                 <p>Complete mechanical, electrical, and plumbing solutions integrated with modern building systems.</p>
                                 <a class="read-more" href="mep-services-sri-lanka">Read More</a>
                             </div>
@@ -475,6 +475,27 @@
         <button id="scroll-top" class="scroll-to-top"><i class="las la-arrow-up"></i></button>
     </div>
     <!--/.scrollup-->
+
+    <script>
+        (function () {
+            var cards = document.querySelectorAll('.service-card-link[data-link]');
+            cards.forEach(function (card) {
+                card.style.cursor = 'pointer';
+                card.addEventListener('click', function (e) {
+                    if (e.target.closest('a, button, input, textarea, select, label')) {
+                        return;
+                    }
+                    window.location.href = card.getAttribute('data-link');
+                });
+                card.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        window.location.href = card.getAttribute('data-link');
+                    }
+                });
+            });
+        })();
+    </script>
 
     <!--jQuery Lib-->
     <script src="assets/js/vendor/jquary-3.6.0.min.js"></script>
