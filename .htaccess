@@ -20,6 +20,9 @@ RewriteRule ^blog-grid(?:\.html)?$ /blog [R=301,L]
 RewriteRule ^blog-classic(?:\.html)?$ /blog [R=301,L]
 RewriteRule ^blog-details(?:\.html)?$ /blog-best-construction-company-kurunegala [R=301,L]
 
+# Redirect legacy service details route to active page
+RewriteRule ^service-details(?:\.html)?$ /services-details [R=301,L]
+
 # Redirect direct .html requests to extensionless URLs
 RewriteCond %{THE_REQUEST} \s/+(.*?)\.html[\s?] [NC]
 RewriteRule ^ %1 [R=301,L]
