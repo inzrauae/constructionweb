@@ -764,7 +764,7 @@ button {
 }
 
 .page-header-bg {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/slider.png);
+    background-image: url(../img/slider.png);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -777,6 +777,14 @@ button {
 }
 
 .page-header-bg:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.modern-hero .page-header-bg:before {
     display: none;
 }
 
