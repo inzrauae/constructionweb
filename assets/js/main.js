@@ -220,22 +220,22 @@
 
         // Project images per testimonial (for the 3 small circles)
         var projectThumbImages = [
-            'assets/img/project 1/638725726_122102506377265842_7639280331058260489_n.jpg',
-            'assets/img/project 2/640076061_122102029647265842_4980090804679205735_n.jpg',
-            'assets/img/project 3/641471454_122102677869265842_4239151838560980879_n.jpg'
+            'assets/img/projects/interior-renovation-rathnapura-1.jpg',
+            'assets/img/projects/luxury-residence-kadawatha-4.jpg',
+            'assets/img/projects/office-renovation-waththala-2.jpg'
         ];
 
         // All project images pool for random large circle display
         var allProjectImages = [
-            'assets/img/project 1/638725726_122102506377265842_7639280331058260489_n.jpg',
-            'assets/img/project 1/639419498_122102506359265842_6530702516491603497_n.jpg',
-            'assets/img/project 2/638323918_122102029713265842_7454231584399311908_n.jpg',
-            'assets/img/project 2/638563809_122102029767265842_8643888364461941513_n.jpg',
-            'assets/img/project 2/639705461_122102029563265842_8797096318167209666_n.jpg',
-            'assets/img/project 2/640076061_122102029647265842_4980090804679205735_n.jpg',
-            'assets/img/project 2/636772481_122102029611265842_2104418771663440571_n.jpg',
-            'assets/img/project 3/640119001_122102677839265842_8155284073814382183_n.jpg',
-            'assets/img/project 3/641471454_122102677869265842_4239151838560980879_n.jpg'
+            'assets/img/projects/interior-renovation-rathnapura-1.jpg',
+            'assets/img/projects/interior-renovation-rathnapura-2.jpg',
+            'assets/img/projects/luxury-residence-kadawatha-1.jpg',
+            'assets/img/projects/luxury-residence-kadawatha-2.jpg',
+            'assets/img/projects/luxury-residence-kadawatha-3.jpg',
+            'assets/img/projects/luxury-residence-kadawatha-4.jpg',
+            'assets/img/projects/luxury-residence-kadawatha-5.jpg',
+            'assets/img/projects/office-renovation-waththala-1.jpg',
+            'assets/img/projects/office-renovation-waththala-2.jpg'
         ];
         var lastRandomIndex = -1;
         function getRandomProjectImage() {

@@ -7,6 +7,15 @@ DirectoryIndex index.html
 		Header set Pragma "no-cache"
 		Header set Expires "0"
 	</FilesMatch>
+	<FilesMatch "\.(jpg|jpeg|png|gif|webp|avif|svg|ico)$">
+		Header set Cache-Control "public, max-age=31536000, immutable"
+	</FilesMatch>
+	<FilesMatch "\.(woff2?|ttf|eot)$">
+		Header set Cache-Control "public, max-age=31536000, immutable"
+	</FilesMatch>
+	<FilesMatch "\.(css|js)$">
+		Header set Cache-Control "public, max-age=2592000"
+	</FilesMatch>
 </IfModule>
 
 # Force index variants to main homepage
@@ -22,6 +31,12 @@ RewriteRule ^blog-details(?:\.html)?$ /blog-best-construction-company-kurunegala
 
 # Redirect legacy service details route to active page
 RewriteRule ^service-details(?:\.html)?$ /services-details [R=301,L]
+
+# Redirect discontinued duplicate about page to the maintained About Us page
+RewriteRule ^about-company(?:\.html)?$ /about [R=301,L]
+
+# Redirect discontinued duplicate home-construction page to house-construction
+RewriteRule ^home-construction-sri-lanka(?:\.html)?$ /house-construction-sri-lanka [R=301,L]
 
 # Redirect direct .html requests to extensionless URLs
 RewriteCond %{THE_REQUEST} \s/+(.*?)\.html[\s?] [NC]
