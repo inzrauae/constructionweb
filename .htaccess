@@ -1,11 +1,50 @@
 RewriteEngine On
 DirectoryIndex index.html
 
+# ---------------------------------------------------------------
+# Transparent WebP delivery
+# If a browser sends "Accept: image/webp" and a pre-built <file>.webp
+# exists next to the original, serve the WebP instead. Image URLs in
+# the HTML stay exactly the same; browsers without WebP support get
+# the original JPEG/PNG untouched.
+# ---------------------------------------------------------------
+<IfModule mod_rewrite.c>
+	RewriteCond %{HTTP_ACCEPT} image/webp
+	RewriteCond %{REQUEST_FILENAME} \.(jpe?g|png)$ [NC]
+	RewriteCond %{REQUEST_FILENAME}\.webp -f
+	RewriteRule ^(.+)$ $1.webp [T=image/webp,L]
+</IfModule>
+
 <IfModule mod_headers.c>
+	# Caches must key on Accept, or a WebP can be served to a client that cannot read it.
+	<FilesMatch "\.(jpe?g|png)$">
+		Header append Vary Accept
+	</FilesMatch>
+</IfModule>
+
+# ---------------------------------------------------------------
+# Compression (Brotli preferred, gzip fallback)
+# ---------------------------------------------------------------
+<IfModule mod_brotli.c>
+	AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/xml text/css text/javascript application/javascript application/json application/xml application/rss+xml application/ld+json image/svg+xml
+</IfModule>
+
+<IfModule mod_deflate.c>
+	AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json application/xml application/rss+xml application/ld+json image/svg+xml
+	BrowserMatch ^Mozilla/4 gzip-only-text/html
+	BrowserMatch ^Mozilla/4\.0[678] no-gzip
+	BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+	Header append Vary Accept-Encoding
+</IfModule>
+
+<IfModule mod_headers.c>
+	# HTML: always revalidate, but allow conditional (304) responses.
+	# "no-store" was previously set here, which forced a full re-download of
+	# every page on every visit and blocked CDN/proxy caching entirely.
 	<FilesMatch "\.(html?)$">
-		Header set Cache-Control "no-cache, no-store, must-revalidate"
-		Header set Pragma "no-cache"
-		Header set Expires "0"
+		Header set Cache-Control "public, max-age=0, must-revalidate"
+		Header unset Pragma
+		Header unset Expires
 	</FilesMatch>
 	<FilesMatch "\.(jpg|jpeg|png|gif|webp|avif|svg|ico)$">
 		Header set Cache-Control "public, max-age=31536000, immutable"
@@ -16,7 +55,21 @@ DirectoryIndex index.html
 	<FilesMatch "\.(css|js)$">
 		Header set Cache-Control "public, max-age=2592000"
 	</FilesMatch>
+	Header set X-Content-Type-Options "nosniff"
+	Header set Referrer-Policy "strict-origin-when-cross-origin"
 </IfModule>
+
+# ---------------------------------------------------------------
+# Correct MIME types & charset
+# ---------------------------------------------------------------
+<IfModule mod_mime.c>
+	AddType application/ld+json .jsonld
+	AddType image/webp .webp
+	AddType image/avif .avif
+	AddType font/woff2 .woff2
+	AddCharset UTF-8 .html .css .js .xml .txt .json
+</IfModule>
+
 
 # Force index variants to main homepage
 RewriteRule ^index(?:\.html)?$ / [R=301,L]
@@ -30,7 +83,7 @@ RewriteRule ^blog-classic(?:\.html)?$ /blog [R=301,L]
 RewriteRule ^blog-details(?:\.html)?$ /blog-best-construction-company-kurunegala [R=301,L]
 
 # Redirect legacy service details route to active page
-RewriteRule ^service-details(?:\.html)?$ /services-details [R=301,L]
+RewriteRule ^service-details(?:\.html)?$ /services [R=301,L]
 
 # Redirect discontinued duplicate about page to the maintained About Us page
 RewriteRule ^about-company(?:\.html)?$ /about [R=301,L]

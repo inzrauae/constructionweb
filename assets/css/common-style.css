@@ -113,6 +113,11 @@ img {
     border: none;
     outline: none;
     max-width: 100%;
+    /* Required companion to the width/height attributes on <img>. Without it the
+       attribute height is used verbatim, so any image constrained by CSS width or
+       by max-width keeps its full intrinsic height and stretches vertically.
+       Specificity is 0,0,1 so class rules that set an explicit height still win. */
+    height: auto;
 }
 
 ul {
@@ -764,7 +769,7 @@ button {
 }
 
 .page-header-bg {
-    background-image: url(../img/slider.png);
+    background-image: url(../img/slider-background.jpg);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
