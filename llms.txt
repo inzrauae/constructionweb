@@ -33,6 +33,7 @@ Named engineering staff published on the site:
 - [MEP Services](https://www.gauraconstruction.lk/mep-services-sri-lanka): mechanical, electrical and plumbing.
 - [Steel Building Construction](https://www.gauraconstruction.lk/steel-building-construction-sri-lanka): steel-frame warehouses, factories and commercial buildings.
 - [Cabana Construction](https://www.gauraconstruction.lk/cabana-construction-sri-lanka): cabanas and outdoor structures for hotels and resorts.
+- [Land Survey Services](https://www.gauraconstruction.lk/survey-department-approved-survey-sri-lanka): land, boundary, subdivision and condominium surveys arranged with Survey Department-licensed surveyors.
 - [All services](https://www.gauraconstruction.lk/services)
 
 ## Reference content
@@ -106,4 +107,4 @@ FAQ entries covering services, coverage and contact details.
   pages for the two real offices; Service, Article/BlogPosting, FAQPage, BreadcrumbList,
   ItemList and CollectionPage where they match visible page content.
 
-Last updated: 2026-09-03
+Last updated: 2026-09-07
