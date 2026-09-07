@@ -1001,7 +1001,7 @@
     02 Hero Section
 ====================================================*/
 .hero-section {
-    background-image: url(../img/hero-bg.jpg);
+    background-image: url(../img/Whisk_23959a633c3258f8c0d44c4e9c8821ebdr.jpeg);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -1034,7 +1034,7 @@
 }
 
 .hero-bg-half {
-    background-image: url(../img/hero-bg-half.jpg);
+    background-image: url(../img/Whisk_4faf7959008f618a0cf488872f0892aadr.jpeg);
     clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
     filter: grayscale(100%);
     background-repeat: no-repeat;
@@ -1266,7 +1266,7 @@
 }
 
 .experience-text h2 {
-    background-image: url(../img/text-bg.jpg);
+    background-image: url("../img/construction solutions.jpeg");
     background-repeat: repeat;
     background-size: contain;
     -webkit-background-clip: text;
@@ -2288,7 +2288,7 @@
 }
 
 .video-wrap {
-    background-image: url(../img/video-bg.jpg);
+    background-image: url(../img/buddika.png);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -2562,6 +2562,25 @@
     z-index: 1;
 }
 
+.review-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    box-shadow: 0px 0px 20px 0.5px rgb(0 0 0 / 20%);
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    position: relative;
+}
+
+.review-avatar i {
+    font-size: 42px;
+    color: #fff;
+}
+
 .review-content {
     background-color: #fff;
     padding: 30px 30px 30px 60px;
@@ -2640,7 +2659,7 @@
 }
 
 .cta-area {
-    background-image: url(../img/cta-background-2.jpg);
+    background-image: url(../img/cta-background-dark.png);
     background-repeat: no-repeat;
     background-position: top center;
     background-size: cover;
@@ -2716,7 +2735,7 @@
 
 /*Call To Action*/
 .cta-inner {
-    background-image: url(../img/cta-background-2.jpg);
+    background-image: url(../img/cta-background-dark.png);
     background-repeat: no-repeat;
     background-position: center center;
     position: relative;
@@ -2979,7 +2998,7 @@
 }
 
 .contact-section {
-    background-image: url(../img/cta-background-2.jpg);
+    background-image: url(../img/cta-background-dark.png);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -2987,6 +3006,29 @@
     position: relative;
     overflow: hidden;
     z-index: 1;
+}
+
+.contact-section:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(10, 15, 20, 0.65);
+    z-index: -1;
+}
+
+.contact-section .contact-heading h1,
+.contact-section .contact-heading h2 {
+    color: #fff;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.85);
+}
+
+.contact-section .contact-heading p {
+    color: var(--light-grey-color);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.contact-section .contact-details li a {
+    color: #fff;
 }
 
 .contact-heading {
@@ -2997,7 +3039,7 @@
     display: flex;
     align-items: center;
     margin-bottom: 40px;
-    color: var(--heading-color);
+    color: #fff;
     font-weight: 500;
 }
 
