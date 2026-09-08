@@ -785,7 +785,7 @@ button {
     content: "";
     position: absolute;
     inset: 0;
-    background-color: rgba(0, 0, 0, 0.2);
+    background: linear-gradient(180deg, rgba(8, 10, 14, 0.62) 0%, rgba(8, 10, 14, 0.5) 45%, rgba(8, 10, 14, 0.68) 100%);
     z-index: 1;
 }
 
