@@ -631,6 +631,54 @@
     </section>
     <!--/.reviews-section-->
 
+    <section class="write-review-section padding-bottom" style="background:#fff;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8" style="margin:0 auto; float:none;">
+                    <div class="section-heading text-center">
+                        <h3>Share Your Experience</h3>
+                        <h2>Write a Review</h2>
+                        <p>Worked with Gaura Construction on a project? Tell us about it — your review goes straight to our team.</p>
+                    </div>
+                    <div class="contact-form">
+                        <form action="php/review-form.php" method="post" id="ajax_review_form" class="form-horizontal">
+                            <div class="contact-form-group">
+                                <div class="form-field">
+                                    <input type="text" id="rev_name" name="rev_name" class="form-control" placeholder="Your Name" required>
+                                </div>
+                                <div class="form-field">
+                                    <input type="email" id="rev_email" name="rev_email" class="form-control" placeholder="Your Email" required>
+                                </div>
+                                <div class="form-field" style="grid-column-end: span 2;">
+                                    <select id="rev_rating" name="rev_rating" class="form-control" required>
+                                        <option value="">Select Your Rating</option>
+                                        <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733; — Excellent</option>
+                                        <option value="4">&#9733;&#9733;&#9733;&#9733;&#9734; — Very Good</option>
+                                        <option value="3">&#9733;&#9733;&#9733;&#9734;&#9734; — Good</option>
+                                        <option value="2">&#9733;&#9733;&#9734;&#9734;&#9734; — Fair</option>
+                                        <option value="1">&#9733;&#9734;&#9734;&#9734;&#9734; — Poor</option>
+                                    </select>
+                                </div>
+                                <div class="form-field message">
+                                    <textarea id="rev_message" name="rev_message" cols="30" rows="5" class="form-control" placeholder="Write your review here..." required></textarea>
+                                </div>
+                                <div class="form-field submit-btn">
+                                    <button id="rev_submit" class="default-btn" type="submit">Submit Review</button>
+                                </div>
+                            </div>
+                            <div style="position:absolute; left:-9999px; top:-9999px;" aria-hidden="true">
+                                <label for="rev_website">Leave this field empty</label>
+                                <input type="text" id="rev_website" name="rev_website" tabindex="-1" autocomplete="off">
+                            </div>
+                            <div id="review-form-messages" class="ajax-form-msg alert" role="alert"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/.write-review-section-->
+
     <section class="call-to-action bg-grey padding-bottom">
         <div class="container">
             <div class="row">
@@ -775,6 +823,7 @@
     <script src="assets/js/vendor/smooth-scroll.js" defer></script>
     <script src="assets/js/vendor/wow.min.js" defer></script>
     <script src="assets/js/mailchimp.js" defer></script>
+    <script src="assets/js/review-form.js" defer></script>
     <script src="assets/js/main.js" defer></script>
 
 </body>
