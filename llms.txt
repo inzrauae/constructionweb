@@ -1,8 +1,9 @@
 # Gaura Construction (Pvt) Ltd
 
 > Gaura Construction (Pvt) Ltd is a Sri Lankan construction company delivering civil
-> construction, house building, renovations, interior design, MEP services, steel building
-> construction and complete design-and-build projects across all 25 districts of Sri Lanka.
+> construction, house building, renovations, interior design, MEP services, aluminium fabrication,
+> glass partition walls, steel building construction and complete design-and-build projects across
+> all 25 districts of Sri Lanka.
 > The company reports 10+ years of operating experience, 235+ staff, and 75+ completed projects.
 
 ## Company facts
@@ -31,6 +32,8 @@ Named engineering staff published on the site:
 - [Renovations](https://www.gauraconstruction.lk/renovations-sri-lanka): home, office and commercial renovation.
 - [Interior Design](https://www.gauraconstruction.lk/interior-design-sri-lanka): interiors and fitouts.
 - [MEP Services](https://www.gauraconstruction.lk/mep-services-sri-lanka): mechanical, electrical and plumbing.
+- [Aluminium Fabricators](https://www.gauraconstruction.lk/aluminium-fabricators-sri-lanka): aluminium windows, doors, curtain walling, railings, ACP cladding and shopfronts.
+- [Glass Partition Walls](https://www.gauraconstruction.lk/glass-partition-wall-sri-lanka): glass, foldable, framed and fabric partition walls for offices, showrooms and homes.
 - [Steel Building Construction](https://www.gauraconstruction.lk/steel-building-construction-sri-lanka): steel-frame warehouses, factories and commercial buildings.
 - [Cabana Construction](https://www.gauraconstruction.lk/cabana-construction-sri-lanka): cabanas and outdoor structures for hotels and resorts.
 - [Land Survey Services](https://www.gauraconstruction.lk/survey-department-approved-survey-sri-lanka): land, boundary, subdivision and condominium surveys arranged with Survey Department-licensed surveyors.
@@ -107,4 +110,4 @@ FAQ entries covering services, coverage and contact details.
   pages for the two real offices; Service, Article/BlogPosting, FAQPage, BreadcrumbList,
   ItemList and CollectionPage where they match visible page content.
 
-Last updated: 2026-09-07
+Last updated: 2026-09-18
